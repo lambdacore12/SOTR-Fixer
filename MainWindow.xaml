@@ -25,7 +25,7 @@
                 <TextBox x:Name="Original_TBox" Margin="10,0,10,0"/>
             </DockPanel>
         </StackPanel>
-        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="15,25,15,15" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5"/>
+        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="15,25,15,15" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5" Click="Transform_Btn_Click"/>
         <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch">
             <TextBlock Text="Final file:" Margin="10,10,10,5"/>
             <DockPanel>
@@ -58,6 +58,6 @@
             
         </DockPanel>
         <!--#endregion-->
-        <Button x:Name="Exit_Btn" Content="Exit" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5" Margin="15,15,15,15" />
+        <Button x:Name="Exit_Btn" Content="Exit" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5" Margin="15,15,15,15" Click="Exit_Btn_Click" />
     </Grid>
 </Window>

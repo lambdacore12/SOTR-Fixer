@@ -46,11 +46,25 @@ namespace SOTR_Fixer
             if (result == true)
             {
                 // Open document
-                fileName = dialog.FileName;
-                filePath = System.IO.Path.GetFileName(fileName);
-                Original_TBox.Text = filePath;
+                //Get file name with path (don't be fooled by the method's name)
+                filePath = dialog.FileName;
+                //Get just file name plus extension
+                fileName = System.IO.Path.GetFileName(filePath);
+                //Display file name in Original text box
+                Original_TBox.Text = fileName;
             }
-        } 
+        }
+
         #endregion
+
+        private void Transform_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
