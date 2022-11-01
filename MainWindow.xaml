@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <TextBlock Text="Original file:" Margin="10,10,10,5"/>
             <DockPanel>
-                <Button x:Name="Open_Original_Btn" Content="Open" DockPanel.Dock="Right" Padding="5,5,5,5" />
+                <Button x:Name="Open_Original_Btn" Content="Open" DockPanel.Dock="Right" Padding="5,5,5,5" Click="Open_Original_Btn_Click" />
                 <TextBox x:Name="Original_TBox" Margin="10,0,10,0"/>
             </DockPanel>
         </StackPanel>
