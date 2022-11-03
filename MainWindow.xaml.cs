@@ -57,14 +57,18 @@ namespace SOTR_Fixer
 
         #endregion
 
+        #region Transform button
         private void Transform_Btn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        } 
+        #endregion
 
+        #region Exit button
         private void Exit_Btn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+            Application.Current.Shutdown();
+        } 
+        #endregion
     }
 }
