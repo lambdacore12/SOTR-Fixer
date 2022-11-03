@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOTR_Fixer.Classes
 {
-    internal class Speaker
+    internal class Speakers
     {
         public string Shortcut { get; set; }
         public string FirstName { get; set; }

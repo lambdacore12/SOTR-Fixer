@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SOTR_Fixer.Classes;
 
 namespace SOTR_Fixer
 {
@@ -28,6 +29,11 @@ namespace SOTR_Fixer
         public MainWindow()
         {
             InitializeComponent();
+            List<Speakers> items = new List<Speakers>();
+            items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
+            items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
+            items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });
+            Speakers_Lv.ItemsSource = items;
         }
 
         #region Open original file
