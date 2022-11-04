@@ -74,7 +74,13 @@ namespace SOTR_Fixer
         private void Exit_Btn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        } 
+        }
         #endregion
+
+        private void Add_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NewSpeaker_Window NewSpeaker = new NewSpeaker_Window();
+            NewSpeaker.Show();
+        }
     }
 }

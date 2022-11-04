@@ -38,7 +38,7 @@
         <DockPanel Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="30,50,30,40">
             <TextBlock Text="Speakers" VerticalAlignment="Stretch" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
             <DockPanel LastChildFill="False" Margin="10" DockPanel.Dock="Bottom">
-                <Button x:Name="Add_Btn" Content="Add" DockPanel.Dock="Left" Width="{Binding ActualWidth, ElementName=Remove_Btn, Mode=OneWay}" />
+                <Button x:Name="Add_Btn" Content="Add" DockPanel.Dock="Left" Width="{Binding ActualWidth, ElementName=Remove_Btn, Mode=OneWay}" Click="Add_Btn_Click" />
                 <Button x:Name="Remove_Btn" Content="Remove" DockPanel.Dock="Right" Padding="5,5,5,5"/>
             </DockPanel>
             <ListView Margin="10,5,10,10" Name="Speakers_Lv">
