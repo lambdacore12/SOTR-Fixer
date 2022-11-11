@@ -25,11 +25,14 @@ namespace SOTR_Fixer
         //Variables that will be used throughout the code
         string fileName = "";
         string filePath = "";
+        
+        List<Speakers> items = new List<Speakers>();
 
         public MainWindow()
         {
             InitializeComponent();
-            List<Speakers> items = new List<Speakers>();
+
+            
             items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
             items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
             items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });

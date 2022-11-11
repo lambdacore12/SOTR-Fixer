@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using SOTR_Fixer.Classes;
 
 namespace SOTR_Fixer
 {
@@ -18,12 +7,31 @@ namespace SOTR_Fixer
     /// Interaction logic for NewSpeaker_Window.xaml
     /// </summary>
     public partial class NewSpeaker_Window : Window
+        
     {
         public NewSpeaker_Window()
         {
             InitializeComponent();            
-
             this.Owner = App.Current.MainWindow;
+            
+            
+
+    }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
         }
+
+
+
+
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
     }
 }
