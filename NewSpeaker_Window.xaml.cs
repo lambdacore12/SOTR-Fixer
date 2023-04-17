@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Markup;
 using SOTR_Fixer.Classes;
 
 namespace SOTR_Fixer
@@ -9,29 +11,28 @@ namespace SOTR_Fixer
     public partial class NewSpeaker_Window : Window
         
     {
+        public string shortcut { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+
+
         public NewSpeaker_Window()
         {
             InitializeComponent();            
-            this.Owner = App.Current.MainWindow;
-            
-            
+        }    
 
-    }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //Items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
-        }
-
-
-
-
-
-
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void NewSpeaker_Cancel_Btn_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        private void NewSpeaker_Add_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            shortcut = Shortcut_TB.Text;
+            firstName = FirstName_TB.Text;
+            lastName = LastName_TB.Text;
+
+            DialogResult = true;
+        }
     }
 }

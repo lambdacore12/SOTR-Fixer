@@ -31,9 +31,7 @@ namespace SOTR_Fixer
         public MainWindow()
         {
             InitializeComponent();
-
             
-            items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
             items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
             items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });
             Speakers_Lv.ItemsSource = items;
@@ -83,7 +81,18 @@ namespace SOTR_Fixer
         private void Add_Btn_Click(object sender, RoutedEventArgs e)
         {
             NewSpeaker_Window NewSpeaker = new NewSpeaker_Window();
-            NewSpeaker.Show();
+            //NewSpeaker.Show();
+
+            if (NewSpeaker.ShowDialog() == true)
+            {
+                items.Add(new Speakers()
+                {   
+                    Shortcut = NewSpeaker.shortcut,
+                    FirstName = NewSpeaker.firstName,
+                    LastName = NewSpeaker.lastName
+                });
+            }
+
         }
     }
 }
