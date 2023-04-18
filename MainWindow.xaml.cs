@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SOTR_Fixer.Classes;
+using System.Collections.ObjectModel;
 
 namespace SOTR_Fixer
 {
@@ -25,8 +26,8 @@ namespace SOTR_Fixer
         //Variables that will be used throughout the code
         string fileName = "";
         string filePath = "";
-        
-        List<Speakers> items = new List<Speakers>();
+
+        ObservableCollection<Speakers> items = new ObservableCollection<Speakers>();
 
         public MainWindow()
         {
@@ -34,6 +35,7 @@ namespace SOTR_Fixer
             
             items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
             items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });
+            items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
             Speakers_Lv.ItemsSource = items;
         }
 
@@ -93,6 +95,15 @@ namespace SOTR_Fixer
                 });
             }
 
+        }
+
+        private void Remove_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = Speakers_Lv.SelectedItems;
+            foreach(var selectedItem in selectedItems.Cast<Speakers>().ToList())
+            {
+                items.Remove(selectedItem);
+            }
         }
     }
 }

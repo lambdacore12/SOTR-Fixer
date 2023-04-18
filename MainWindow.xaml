@@ -39,7 +39,7 @@
             <TextBlock Text="Speakers" VerticalAlignment="Stretch" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
             <DockPanel LastChildFill="False" Margin="10" DockPanel.Dock="Bottom">
                 <Button x:Name="Add_Btn" Content="Add" DockPanel.Dock="Left" Width="{Binding ActualWidth, ElementName=Remove_Btn, Mode=OneWay}" Click="Add_Btn_Click" />
-                <Button x:Name="Remove_Btn" Content="Remove" DockPanel.Dock="Right" Padding="5,5,5,5"/>
+                <Button x:Name="Remove_Btn" Content="Remove" DockPanel.Dock="Right" Padding="5,5,5,5" Click="Remove_Btn_Click"/>
             </DockPanel>
             <ListView Margin="10,5,10,10" Name="Speakers_Lv">
                 <ListView.Resources>                    
