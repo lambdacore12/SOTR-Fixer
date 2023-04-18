@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SOTR_Fixer.Classes;
 using System.Collections.ObjectModel;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SOTR_Fixer
 {
@@ -24,8 +25,9 @@ namespace SOTR_Fixer
     public partial class MainWindow : Window
     {
         //Variables that will be used throughout the code
-        string fileName = "";
-        string filePath = "";
+        public static string fileName = "";
+        //string filePath = "";
+        public static string filePath = "";
 
         ObservableCollection<Speakers> items = new ObservableCollection<Speakers>();
 
@@ -69,6 +71,14 @@ namespace SOTR_Fixer
         #region Transform button
         private void Transform_Btn_Click(object sender, RoutedEventArgs e)
         {
+            Extractor.Extract(filePath);
+            string finalText = Transformer.Transform(filePath);
+
+            string finalPath = @"C:\Users\lambd\Source\Repos\SOTR-Fixer 3\test.txt";
+            using (StreamWriter writer = new StreamWriter(finalPath))
+            {
+                writer.Write(finalText);
+            }
 
         } 
         #endregion
@@ -76,10 +86,11 @@ namespace SOTR_Fixer
         #region Exit button
         private void Exit_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
         #endregion
 
+        #region Add button
         private void Add_Btn_Click(object sender, RoutedEventArgs e)
         {
             NewSpeaker_Window NewSpeaker = new NewSpeaker_Window();
@@ -88,7 +99,7 @@ namespace SOTR_Fixer
             if (NewSpeaker.ShowDialog() == true)
             {
                 items.Add(new Speakers()
-                {   
+                {
                     Shortcut = NewSpeaker.shortcut,
                     FirstName = NewSpeaker.firstName,
                     LastName = NewSpeaker.lastName
@@ -96,14 +107,20 @@ namespace SOTR_Fixer
             }
 
         }
+        #endregion
 
+        #region Remove button
         private void Remove_Btn_Click(object sender, RoutedEventArgs e)
         {
             var selectedItems = Speakers_Lv.SelectedItems;
-            foreach(var selectedItem in selectedItems.Cast<Speakers>().ToList())
+            foreach (var selectedItem in selectedItems.Cast<Speakers>().ToList())
             {
                 items.Remove(selectedItem);
             }
-        }
+        } 
+        #endregion
+
+
+
     }
 }
