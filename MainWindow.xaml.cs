@@ -1,21 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SOTR_Fixer.Classes;
 using System.Collections.ObjectModel;
-using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
 
 namespace SOTR_Fixer
 {
@@ -71,15 +59,46 @@ namespace SOTR_Fixer
         #region Transform button
         private void Transform_Btn_Click(object sender, RoutedEventArgs e)
         {
+            //main activity happens here (check transformer class)
             string finalText = Transformer.Transform(filePath);
 
-            string finalPath = filePath + "_SOTRfixed.srt";
+            //get just the pure name of the file
+            string fileNameOnly = System.IO.Path.GetFileNameWithoutExtension(filePath);
+
+            //prepare new file to write into (same path as original but of course different name)
+            string finalPath = System.IO.Path.GetDirectoryName(filePath) + "\\" + fileNameOnly + "_SOTRfixed.srt";
             
             using (StreamWriter writer = new StreamWriter(finalPath))
             {
                 writer.Write(finalText);
             }
 
+            //write the file name in the final textbox (filename_SOTRfixed.srt)
+            Final_TBox.Text = System.IO.Path.GetFileName(finalPath);
+
+        }
+        #endregion
+
+        #region Open final file
+        private void Open_Final_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            string directory = System.IO.Path.GetDirectoryName(filePath);
+
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.InitialDirectory = directory; // set the initial directory
+            dialog.FileName = Final_TBox.Text; // set the initial file name
+            dialog.Filter = "SubRip file (.srt)|*.srt"; // Filter files by extension
+            bool? result = dialog.ShowDialog(); // show the dialog
+
+            if (result == true)
+            {
+                string filePath = dialog.FileName;
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = filePath,
+                    UseShellExecute = true
+                });
+            }
         } 
         #endregion
 
@@ -117,10 +136,11 @@ namespace SOTR_Fixer
             {
                 items.Remove(selectedItem);
             }
-        } 
+        }
+
+
         #endregion
 
-
-
+        
     }
 }
