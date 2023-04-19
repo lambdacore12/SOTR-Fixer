@@ -80,6 +80,8 @@ namespace SOTR_Fixer
             //write the file name in the final textbox (filename_SOTRfixed.srt)
             Final_TBox.Text = System.IO.Path.GetFileName(finalPath);
 
+            MessageBox.Show("Your file has been transformed.", "Transformation Done", MessageBoxButton.OK);
+
         }
         #endregion
 
@@ -157,7 +159,17 @@ namespace SOTR_Fixer
                     items.Remove(selectedItem);
                 }
             }
-        } 
+        }
         #endregion
+
+        private void About_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Search Off the Record Fixer" + Environment.NewLine +
+                            "Version 1.0" + Environment.NewLine + Environment.NewLine +
+                            "Coded by lambdacore_12" + Environment.NewLine +
+                            "gordon.freeman.222@gmail.com" + Environment.NewLine +
+                            "ISTJ"
+                            , "About", MessageBoxButton.OK);
+        }
     }
 }

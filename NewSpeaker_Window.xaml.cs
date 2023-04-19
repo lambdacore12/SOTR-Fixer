@@ -23,13 +23,16 @@ namespace SOTR_Fixer
         {
             InitializeComponent();
             Shortcut_TB.Focus();
-        }    
+        }
 
+        #region close New Speaker window
         private void NewSpeaker_Cancel_Btn_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+        #endregion
 
+        #region add new speaker with gathered data
         private void NewSpeaker_Add_Btn_Click(object sender, RoutedEventArgs e)
         {
             shortcut = Shortcut_TB.Text;
@@ -37,7 +40,8 @@ namespace SOTR_Fixer
             lastName = LastName_TB.Text;
 
             DialogResult = true;
-        }
+        } 
+        #endregion
 
         #region using 't' and more than one letter not allowed in shortcuts
         private void Shortcut_TB_PreviewTextInput(object sender, TextCompositionEventArgs e)

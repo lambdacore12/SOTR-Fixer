@@ -19,19 +19,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10,15,20,0">
-            <TextBlock Text="Shortcut" Margin="0,0,0,7" Height="17"/>
-            <TextBlock Text="First Name" Margin="0,0,0,7" Height="17"/>
+            <TextBlock Text="Shortcut" Margin="0,0,0,10" Height="17"/>
+            <TextBlock Text="First Name" Margin="0,0,0,10" Height="17"/>
             <TextBlock Text="Last Name" Margin="0,0,0,7" Height="17"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="0,15,0,0">
-            <TextBox x:Name="Shortcut_TB" Margin="0,0,0,7" Height="17" PreviewTextInput="Shortcut_TB_PreviewTextInput" PreviewKeyDown="Shortcut_TB_PreviewKeyDown">
-                <TextBox.ToolTip>
-                    <ToolTip Visibility="Collapsed" x:Name="ToolTip">
-                        "t" is not allowed as it is a time indicator.
-                    </ToolTip>
-                </TextBox.ToolTip>
-            </TextBox>
-            <TextBox x:Name="FirstName_TB" Margin="0,0,0,7" Height="17"/>
+            <TextBox x:Name="Shortcut_TB" Margin="0,0,0,10" Height="17" PreviewTextInput="Shortcut_TB_PreviewTextInput"
+                     PreviewKeyDown="Shortcut_TB_PreviewKeyDown"/>
+            <TextBox x:Name="FirstName_TB" Margin="0,0,0,10" Height="17"/>
             <TextBox x:Name="LastName_TB" Height="17"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal" Margin="0,0,10,20">
