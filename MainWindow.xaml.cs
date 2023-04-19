@@ -71,7 +71,6 @@ namespace SOTR_Fixer
         #region Transform button
         private void Transform_Btn_Click(object sender, RoutedEventArgs e)
         {
-            //Extractor.Extract(filePath);
             string finalText = Transformer.Transform(filePath);
 
             string finalPath = filePath + "_SOTRfixed.srt";
