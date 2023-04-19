@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SOTR_Fixer;
 
 namespace SOTR_Fixer.Classes
 {
@@ -10,20 +11,28 @@ namespace SOTR_Fixer.Classes
     {
         public static string Transform(string path)
         {
-            string[] shortcuts = new string[3]
+            //populating list of shortcuts to be used
+            List<string> shortcuts = new List<string>();
+            foreach (var item in MainWindow.items)
             {
-                "j",
-                "l",
-                "v"
-            };
+                shortcuts.Add(item.Shortcut);
+            }
 
-            string[] names = new string[3]
+            //populating list of first names to be used
+            List<string> firstNames = new List<string>();
+            foreach (var item in MainWindow.items)
             {
-                " John Mueller: ",
-                " Lizzie Sassmann: ",
-                " Vanessa Fox: "
-            };
+                firstNames.Add(item.FirstName);
+            }
 
+            //populating list of last names to be used
+            List<string> lastNames = new List<string>();
+            foreach (var item in MainWindow.items)
+            {
+                lastNames.Add(item.LastName);
+            }
+
+            //extracting subtitle items from selected subtitle
             List<SrtItems> srtItemsList = Extractor.Extract(path);
 
             //loop through all srt items
@@ -36,7 +45,7 @@ namespace SOTR_Fixer.Classes
                 string keySpace = srtItemsList[i].SubLine[0][1].ToString();
 
                 //loop through shortcuts to check if they exist
-                for (int j = 0; j < shortcuts.Length; ++j)
+                for (int j = 0; j < shortcuts.Count; ++j)
                 {   
                     //if they do exist
                     if (keyLetter == shortcuts[j] && keySpace == " ")
@@ -45,16 +54,17 @@ namespace SOTR_Fixer.Classes
                         if (keyLetter == "t")
                         {
                             //replace the key letter t in first line with "[substart0->8] (which extracts the time values)
-                            string newLine = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]" + srtItemsList[i].SubLine[0].Remove(0, 1);
-                            srtItemsList[i].SubLine[0] = newLine;
+                            string finalLine = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]" + srtItemsList[i].SubLine[0].Remove(0, 1);
+                            srtItemsList[i].SubLine[0] = finalLine;
                         }
-                        else
+                        else //if key letter is not t (meaning is a letter from one of the shortcuts)
                         {
                             //same as above but the desired format of [time] name [time]
                             string time = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]";
-                            string cleanLinestr4 = srtItemsList[i].SubLine[0].Remove(0, 1);
-                            string str5 = time + names[j] + time + cleanLinestr4;
-                            srtItemsList[i].SubLine[0] = str5;
+                            string cleanLine = srtItemsList[i].SubLine[0].Remove(0, 1);
+                            // [00:00:01] John Mueller: [00:00:01] Welcome to this podcast.
+                            string finalLine = $"{ time } { firstNames[j] } { lastNames[j] }: { time } { cleanLine }";
+                            srtItemsList[i].SubLine[0] = finalLine;
                         }
                     }
                 }

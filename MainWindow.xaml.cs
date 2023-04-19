@@ -29,7 +29,7 @@ namespace SOTR_Fixer
         //string filePath = "";
         public static string filePath = "";
 
-        ObservableCollection<Speakers> items = new ObservableCollection<Speakers>();
+        public static ObservableCollection<Speakers> items = new ObservableCollection<Speakers>();
 
         public MainWindow()
         {
@@ -71,10 +71,11 @@ namespace SOTR_Fixer
         #region Transform button
         private void Transform_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Extractor.Extract(filePath);
+            //Extractor.Extract(filePath);
             string finalText = Transformer.Transform(filePath);
 
-            string finalPath = @"C:\Users\lambd\Source\Repos\SOTR-Fixer 3\test.txt";
+            string finalPath = filePath + "_SOTRfixed.srt";
+            
             using (StreamWriter writer = new StreamWriter(finalPath))
             {
                 writer.Write(finalText);
