@@ -39,10 +39,10 @@ namespace SOTR_Fixer
             DialogResult = true;
         }
 
-        #region using 't' not allowed in shortcuts
+        #region using 't' and more than one letter not allowed in shortcuts
         private void Shortcut_TB_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (e.Text == "t")
+            if (e.Text == "t" || e.Text == "T")
             {
                 e.Handled = true; // prevent the "t" from being entered
                 //ToolTip.Visibility = Visibility.Visible; // show the ToolTip
