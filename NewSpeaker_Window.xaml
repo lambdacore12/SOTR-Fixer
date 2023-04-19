@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="New Speaker" Height="180" Width="520"
         WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Margin="0,10,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -24,7 +24,13 @@
             <TextBlock Text="Last Name" Margin="0,0,0,7" Height="17"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="0,15,0,0">
-            <TextBox x:Name="Shortcut_TB" Margin="0,0,0,7" Height="17"/>
+            <TextBox x:Name="Shortcut_TB" Margin="0,0,0,7" Height="17" PreviewTextInput="Shortcut_TB_PreviewTextInput" PreviewKeyDown="Shortcut_TB_PreviewKeyDown">
+                <TextBox.ToolTip>
+                    <ToolTip Visibility="Collapsed" x:Name="ToolTip">
+                        "t" is not allowed as it is a time indicator.
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
             <TextBox x:Name="FirstName_TB" Margin="0,0,0,7" Height="17"/>
             <TextBox x:Name="LastName_TB" Height="17"/>
         </StackPanel>

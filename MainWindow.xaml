@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SOTR_Fixer"
         mc:Ignorable="d"
         Title="SOTR Fixer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Margin="0,0,0,30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="303*"/>
             <ColumnDefinition Width="81*"/>
@@ -22,14 +22,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--#region Transformation -->
-        <StackPanel VerticalAlignment="Center" Grid.ColumnSpan="3">
+        <StackPanel VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,0,0,50">
             <TextBlock Text="Original file:" Margin="10,10,10,5"/>
             <DockPanel>
                 <Button x:Name="Open_Original_Btn" Content="Open" DockPanel.Dock="Right" Padding="5,5,5,5" Click="Open_Original_Btn_Click" />
                 <TextBox x:Name="Original_TBox" Margin="10,0,10,0"/>
             </DockPanel>
         </StackPanel>
-        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="143,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,5,30,5" Click="Transform_Btn_Click" Grid.RowSpan="2"/>
+        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="100,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="30,5,30,5" Click="Transform_Btn_Click" Grid.RowSpan="2"/>
         <StackPanel Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="3">
             <TextBlock Text="Final file:" Margin="10,10,10,5"/>
             <DockPanel>
@@ -68,5 +68,9 @@
         </DockPanel>
         <!--#endregion-->
         <Button x:Name="Exit_Btn" Content="Exit" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="30,5,30,5" Margin="57,0,0,0" Click="Exit_Btn_Click" />
+        <DockPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
+            <Button x:Name="About_Btn" Content="About" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="30,5,30,5" Margin="0,0,35,0" />    
+        </DockPanel>
+        
     </Grid>
 </Window>

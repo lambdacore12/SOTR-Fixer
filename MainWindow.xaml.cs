@@ -26,7 +26,7 @@ namespace SOTR_Fixer
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
             items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
             items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });
             items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
