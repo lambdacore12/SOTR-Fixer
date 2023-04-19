@@ -4,6 +4,10 @@ using System.Windows;
 using SOTR_Fixer.Classes;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Microsoft.Win32;
+
+using System;
+using System.Windows.Input;
 
 namespace SOTR_Fixer
 {
@@ -22,7 +26,7 @@ namespace SOTR_Fixer
         public MainWindow()
         {
             InitializeComponent();
-            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             items.Add(new Speakers() { Shortcut = "j", FirstName = "John", LastName = "Mueller" });
             items.Add(new Speakers() { Shortcut = "l", FirstName = "Lizzi", LastName = "Sassman" });
             items.Add(new Speakers() { Shortcut = "m", FirstName = "Martin", LastName = "Splitt" });
@@ -88,8 +92,11 @@ namespace SOTR_Fixer
             dialog.InitialDirectory = directory; // set the initial directory
             dialog.FileName = Final_TBox.Text; // set the initial file name
             dialog.Filter = "SubRip file (.srt)|*.srt"; // Filter files by extension
+            dialog.FilterIndex = 1;
+            dialog.RestoreDirectory = true;
             bool? result = dialog.ShowDialog(); // show the dialog
 
+            
             if (result == true)
             {
                 string filePath = dialog.FileName;
@@ -113,7 +120,6 @@ namespace SOTR_Fixer
         private void Add_Btn_Click(object sender, RoutedEventArgs e)
         {
             NewSpeaker_Window NewSpeaker = new NewSpeaker_Window();
-            //NewSpeaker.Show();
 
             if (NewSpeaker.ShowDialog() == true)
             {
@@ -123,6 +129,7 @@ namespace SOTR_Fixer
                     FirstName = NewSpeaker.firstName,
                     LastName = NewSpeaker.lastName
                 });
+                
             }
 
         }
@@ -137,10 +144,20 @@ namespace SOTR_Fixer
                 items.Remove(selectedItem);
             }
         }
-
-
         #endregion
 
-        
+        #region Remove with Delete
+        private void Speakers_Lv_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                var selectedItems = Speakers_Lv.SelectedItems;
+                foreach (var selectedItem in selectedItems.Cast<Speakers>().ToList())
+                {
+                    items.Remove(selectedItem);
+                }
+            }
+        } 
+        #endregion
     }
 }

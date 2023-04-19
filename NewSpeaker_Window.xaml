@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:SOTR_Fixer"
         mc:Ignorable="d"
         Title="New Speaker" Height="180" Width="520"
-        WindowStartupLocation="CenterOwner">
-        
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

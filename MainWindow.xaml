@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SOTR_Fixer"
         mc:Ignorable="d"
-        Title="SOTR Fixer" Height="450" Width="800">
+        Title="SOTR Fixer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="364*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -18,15 +22,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--#region Transformation -->
-        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" Grid.ColumnSpan="3">
             <TextBlock Text="Original file:" Margin="10,10,10,5"/>
             <DockPanel>
                 <Button x:Name="Open_Original_Btn" Content="Open" DockPanel.Dock="Right" Padding="5,5,5,5" Click="Open_Original_Btn_Click" />
                 <TextBox x:Name="Original_TBox" Margin="10,0,10,0"/>
             </DockPanel>
         </StackPanel>
-        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="15,25,15,15" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5" Click="Transform_Btn_Click"/>
-        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+        <Button x:Name="Transform_Btn" Content="Transform" Grid.Row="1" Margin="143,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="30,5,30,5" Click="Transform_Btn_Click" Grid.RowSpan="2"/>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="3">
             <TextBlock Text="Final file:" Margin="10,10,10,5"/>
             <DockPanel>
                 <Button x:Name="Open_Final_Btn" Content="Open" DockPanel.Dock="Right" Padding="5,5,5,5" UseLayoutRounding="False" Click="Open_Final_Btn_Click"/>
@@ -35,9 +39,9 @@
         </StackPanel>
         <!--#endregion-->
         <!--#region Shortcuts -->
-        <DockPanel Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="30,50,30,40">
+        <DockPanel Grid.Column="4" Grid.RowSpan="3" Margin="19,50,30,40" Grid.ColumnSpan="2">
             <TextBlock Text="Speakers" VerticalAlignment="Stretch" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
-            
+
             <DockPanel LastChildFill="False" Margin="10" DockPanel.Dock="Bottom">
                 <Button x:Name="Add_Btn" Content="Add" DockPanel.Dock="Left" Width="{Binding ActualWidth, ElementName=Remove_Btn, Mode=OneWay}" Click="Add_Btn_Click" />
                 <Button x:Name="Remove_Btn" Content="Remove" DockPanel.Dock="Right" Padding="5,5,5,5" Click="Remove_Btn_Click"/>
@@ -46,7 +50,7 @@
                 <Label DockPanel.Dock="Bottom" Padding="5,5,5,5">
                     <TextBlock TextWrapping="Wrap">* : Note that you cannot use 't' as a shortcut because it is reserved for the time indicator.</TextBlock>
                 </Label>
-                <ListView Margin="10,5,10,0" Name="Speakers_Lv" DockPanel.Dock="Top">
+                <ListView Margin="10,5,10,0" Name="Speakers_Lv" DockPanel.Dock="Top" PreviewKeyDown="Speakers_Lv_PreviewKeyDown">
                     <ListView.Resources>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
                             <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -63,6 +67,6 @@
             </DockPanel>
         </DockPanel>
         <!--#endregion-->
-        <Button x:Name="Exit_Btn" Content="Exit" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,5,30,5" Margin="15,15,15,15" Click="Exit_Btn_Click" />
+        <Button x:Name="Exit_Btn" Content="Exit" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="30,5,30,5" Margin="57,0,0,0" Click="Exit_Btn_Click" />
     </Grid>
 </Window>
