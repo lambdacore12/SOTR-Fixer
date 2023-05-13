@@ -23,3 +23,5 @@ j Hello, my name is John, and welcome to my video. The program does all the repl
 This WPF program will work as follows: One button to open an SRT file, a second button to transform it to the desired format and a third button to open the final file.
 
 There will be another pane in which to set which letter goes with which name to perform the transformation.
+
+Here is [an example] of the final product ([https://pages.github.com/](https://content.libsyn.com/p/6/a/6/6a6b41a672a1bc91/Search_Off_the_Record_-_59th_episode.pdf?c_id=149497554&cs_id=149497554&response-content-type=application%2Fpdf&Expires=1683987437&Signature=CbEwFVAKPifW9EMNRbiuFexQ~03ubnP4lPuQ9BE-XHc2iR3Uy5pNKFj8WN1WA4YXufQyUxx5-NoIwlsMN5ll7Do3YZYBbJYh9qqF5ag0lyKGfN3jKnu-nurNDS7QaJE8l3nqPxmzgdD0cEcGuKnaHEkzAziOvZkOmjWsZuAe5XXhKnhGpNsYq3-x1hLU1kTGlncxJywqJpyASRcF3da-LXpal4BZ3E2Crjh0bjdV5IHrg7EkOzEjjQSmvdyDwHgj4j9W8Kbb1VfNNlg48nyFfCpxcIpz29FnGgo6sbcy3h7mrQmRbuMncl7DorLlVToyL8bHPgrF4TguWDg1bAscBQ__&Key-Pair-Id=K1YS7LZGUP96OI))
