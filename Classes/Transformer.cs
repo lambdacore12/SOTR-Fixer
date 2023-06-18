@@ -44,27 +44,28 @@ namespace SOTR_Fixer.Classes
                 //this is the space after after the key letter
                 string keySpace = srtItemsList[i].SubLine[0][1].ToString();
 
-                //loop through shortcuts to check if they exist
-                for (int j = 0; j < shortcuts.Count; ++j)
-                {   
-                    //if they do exist
-                    if (keyLetter == shortcuts[j] && keySpace == " ")
+                //check if the key letter is 't', meaning a time indicator, followed be a space
+                if (keyLetter == "t" && keySpace == " ")
+                {
+                    //replace the key letter t in first line with "[substart0->8] (which extracts the time values)
+                    string finalLine = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]" + srtItemsList[i].SubLine[0].Remove(0, 1);
+                    srtItemsList[i].SubLine[0] = finalLine;
+                }
+                //check if the key letter is within the shortcuts, followed be a space 
+                else
+                {
+                    //loop through shortcuts
+                    for (int j = 0; j < shortcuts.Count; ++j)
                     {
-                        //if the key letter is 't', meaning a time indicator
-                        if (keyLetter == "t")
+                        //if conditions are met (key letter exists and followed by space)
+                        if (keyLetter == shortcuts[j] && keySpace == " ")
                         {
-                            //replace the key letter t in first line with "[substart0->8] (which extracts the time values)
-                            string finalLine = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]" + srtItemsList[i].SubLine[0].Remove(0, 1);
-                            srtItemsList[i].SubLine[0] = finalLine;
-                        }
-                        else //if key letter is not t (meaning is a letter from one of the shortcuts)
-                        {
-                            //same as above but the desired format of [time] name [time]
+                            //same as above but the desired format of "[time] name [time] line"
                             string time = "[" + srtItemsList[i].SubStart.ToString().Substring(0, 8) + "]";
-                            string cleanLine = srtItemsList[i].SubLine[0].Remove(0, 1);
+                            string cleanLine = srtItemsList[i].SubLine[0].Substring(2);
                             // [00:00:01] John Mueller: [00:00:01] Welcome to this podcast.
-                            string finalLine = $"{ time } { firstNames[j] } { lastNames[j] }: { time } { cleanLine }";
-                            srtItemsList[i].SubLine[0] = finalLine;
+                            string finalLine = $"{time} {firstNames[j]} {lastNames[j]}: {time} {cleanLine}";
+                            srtItemsList[i].SubLine[0] = finalLine;                         
                         }
                     }
                 }
